@@ -82,7 +82,20 @@ router.put('/:id', function(req, res, next){
     }
 });
 
+router.delete('/:id', function(req, res, next){ {
+    db.todos
+        .remove({
+            _id: db.ObjectId(req.params.id)
+        }, function(err, result){
+            if(err){
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        });
 
+    }
+});
 
 
 module.exports = router;
